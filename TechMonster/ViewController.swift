@@ -113,7 +113,7 @@ class ViewController: UIViewController {
         var alert = UIAlertController(title: "バトル終了", message: finishedMessage, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(
             UIAlertAction(
-                title: "ok", style: .Default, handler: {
+                title: "OK", style: .Default, handler: {
                     action in self.dismissViewControllerAnimated( true, completion: nil)
             }))
         self.presentViewController(alert, animated: true, completion: nil)
@@ -125,9 +125,14 @@ class ViewController: UIViewController {
     }
     
     func updateHPValue(){
-        if enemy.currentHP < player.maxHP {
-            player.currentHP = enemy.currentHP + player.defencePoint
-            playerHPBar.progress = enemy.currentHP / player.maxHP
+        if enemy.currentHP < enemy.maxHP {
+            player.currentHP = enemy.currentHP + enemy.defencePoint
+            playerHPBar.progress = enemy.currentHP / enemy.maxHP
+        }
+        
+        if player.currentHP < player.maxHP {
+            player.currentHP = player.currentHP + player.defencePoint
+            playerHPBar.progress = player.currentHP / player.maxHP
         }
     }
  
